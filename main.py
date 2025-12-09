@@ -9,6 +9,9 @@ st.set_page_config(page_title="QR Code Generator", layout="wide")
 
 # Hide default streamlit elements
 st.markdown("""
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5189735719754116"
+     crossorigin="anonymous"></script>
+    <style>
     <style>
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
@@ -180,4 +183,5 @@ with right_ad:
 st.markdown("---")
 _, bottom_ad, _ = st.columns([1, 2, 1])
 with bottom_ad:
+
     render_ad(width="100%", height=90)
