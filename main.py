@@ -9,9 +9,8 @@ st.set_page_config(page_title="QR Code Generator", layout="wide")
 
 # Hide default streamlit elements
 st.markdown("""
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5189735719754116"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5189735719754116"
      crossorigin="anonymous"></script>
-    <style>
     <style>
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
@@ -56,28 +55,40 @@ def generate_qr(url: str) -> bytes:
     png_bytes.seek(0)
     return png_bytes.getvalue()
 
-# Google Ads placeholder
-def render_ad(width: str = "100%", height: int = 250):
+# Updated Ad render function with your ad code
+def render_ad(ad_width: int = 320, ad_height: int = 50):
+    """Render the actual ad from highperformanceformat.com"""
     ad_html = f"""
-    <div style="width:{width}; height:{height}px; background:#f0f0f0; border:1px solid #ddd; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#999; font-size:12px;">
-        Google Ad Space
+    <div style="display:flex; justify-content:center; align-items:center; padding:10px;">
+        <script type="text/javascript">
+          atOptions = {{
+            'key' : 'b8f4a9d246eaa202e442df7f246bf92f',
+            'format' : 'iframe',
+            'height' : {ad_height},
+            'width' : {ad_width},
+            'params' : {{}}
+          }};
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/b8f4a9d246eaa202e442df7f246bf92f/invoke.js"></script>
     </div>
     """
-    st.components.v1.html(ad_html, height=height + 20)
+    st.components.v1.html(ad_html, height=ad_height + 30)
 
 # Title
 st.markdown("<h1 style='text-align: center;'>Free QR Code Generator</h1>", unsafe_allow_html=True)
+st.markdown("<h6 style='text-align: center;'>No BS. Free for life time. Enjoy :)</h3>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
 # Main layout: Left Ad | Center (Input + Arrow + QR) | Right Ad
 left_ad, center, right_ad = st.columns([1, 3, 1], gap="large")
 
 with left_ad:
     st.markdown("<br>" * 3, unsafe_allow_html=True)
-    render_ad(width="100%", height=300)
+    # Vertical ad for sidebar
+    render_ad(ad_width=320, ad_height=250)
 
 with center:
     # Input section
-    st.markdown("<h4 style='text-align: center;'>No BS. Free for life time. Enjoy :)</h3>", unsafe_allow_html=True)
     
     # URL input + Validation badge on same row
     url_col, input_col, validation_col = st.columns([1, 6, 1])
@@ -177,11 +188,12 @@ with center:
 
 with right_ad:
     st.markdown("<br>" * 3, unsafe_allow_html=True)
-    render_ad(width="100%", height=300)
+    # Vertical ad for sidebar
+    render_ad(ad_width=320, ad_height=250)
 
-# Bottom Ad
+# Bottom Ad (horizontal banner)
 st.markdown("---")
 _, bottom_ad, _ = st.columns([1, 2, 1])
 with bottom_ad:
-
-    render_ad(width="100%", height=90)
+    # Horizontal banner ad at bottom
+    render_ad(ad_width=728, ad_height=90)
